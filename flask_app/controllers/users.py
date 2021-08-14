@@ -27,7 +27,8 @@ def create_dojos():
 
 @app.route('/create/ninja_page')
 def create_ninja_page():
-    return render_template('ninja.html')
+    dojo_names = Dojos.get_all()
+    return render_template('ninja.html', dojo_names = dojo_names)
 
 @app.route('/create/ninjas', methods = ['POST'])
 def create_ninjas():
@@ -40,7 +41,8 @@ def create_ninjas():
     Ninjas.create(data)
     return redirect('/index/ninjas')
 
-@app.route('/index/dojo/ninjas/<int:id>')
-def dojos_ninjas(id):
-    ninjas_info = Dojos.show_dojo_ninjas(id)
-    return render_template('dojos_ninjas.html', ninjas_info = ninjas_info)
+@app.route('/index/dojo/ninjas/<int:id>/<name>')
+def dojos_ninjas(id, name):
+    ninja_info = Ninjas.show_dojo_ninjas(id)
+    session['name'] = name
+    return render_template('dojos_ninjas.html', ninja_info = ninja_info)

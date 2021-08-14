@@ -8,11 +8,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <title>Dojo</title>
     <style>
-      li {
-          list-style: none;
-          color: firebrick;
-          padding-top: 10px;
-      }
+        body {
+            background-color: antiquewhite;
+        }
+
+        li {
+            list-style: none;
+            color: firebrick;
+            padding-top: 10px;
+        }
+
+        #rightHRef {
+            margin-left: 20px;
+        }
     </style>
 </head>
 <body>
@@ -36,14 +44,14 @@
             <div class="col-5 border border-dark border 2 ms-1" id="listBox">
                 <ul>
                     {% for dojos in dojo_info %}
-                    <li><a href="/index/dojo/ninjas/{{dojos.id}}">{{ dojos.name }}</a></li>
+                    <li><a href="/index/dojo/ninjas/{{dojos.id}}/{{dojos.name}}">{{ dojos.name }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
         </div>
         <div class="row mt-5">
             <div class="col-5"></div>
-                <div class="col-4"><a href="/create/ninja_page">Add Ninja</a></div>
+                <div class="col-5"><a href="/create/ninja_page">Add Ninja</a><a id="rightHRef" href="/index/ninjas">All Ninjas</a></div>
             </div>
     </div>
 </body>

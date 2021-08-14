@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <title>Ninja</title>
+    <style>
+        body {
+            background-color: antiquewhite;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -18,12 +23,9 @@
                     </div>
                     <div class="col-4">
                         <select name="dojo_id" id="dojos">
-                           <option value="1">Bellevue</option>
-                           <option value="2">Boise</option>
-                           <option value="3">chicago</option>
-                           <option value="4">Los Angeles</option>
-                           <option value="5">Silicon Valley</option>
-                           <option value="6">Online</option>
+                            {% for options in dojo_names %}
+                           <option value={{options.id}}>{{options.name}}</option>
+                           {% endfor %}
                        </select>
                     </div>
                 </div>

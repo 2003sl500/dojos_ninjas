@@ -4,44 +4,78 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <title>Ninja</title>
+    <title>Dojo Ninjas</title>
+    <style>
+        body {
+            background-color: antiquewhite;
+        }
+
+        .container {
+            width: 60%;
+            margin: 0px auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: firebrick;
+        }
+
+        table {
+            margin: 0px auto;
+            width: 100%;
+            border: 3px ridge rgba(0, 0, 255, 0.404);
+            box-shadow: 10px 10px 10px rgba(78, 118, 145, 0.322);
+        }
+
+        th {
+            border: 3px ridge rgba(0, 0, 255, 0.616);
+            padding: 7px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        td {
+            border: 3px ridge rgba(0, 0, 255, 0.404);
+            padding: 7px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        #anchor {
+            margin-top: 25px;
+            font-size: 1.3rem;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-10 text-center mt-3 mb-3"><h1>Ninjas</h1></div>
-        </div>
-        <div class="row">
-            <div class="col">
-               <table class="table">
-                    <thead>
-                        <tr>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Age</th>
-                        <th scope="col">Dojo ID</th>
-                        </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for ninjas_data in ninjas_info %}
-                        <tr>
-                        <td>{{ ninjas_data.first_name }}</td>
-                        <td>{{ ninjas_data.last_name }}</td>
-                        <td>{{ ninjas_data.age }}</td>
-                        <td>{{ ninjas_data.dojo_id }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                    </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-2 mt-3">
-                <a href="/index/dojos">Home</a>
-            </div>
-        </div>
+<div class="container">
+    <div class="row">
+        <h1>{{ session['name'] }} Ninjas</h1>
     </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Age</th>
+                </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in ninja_info %}
+                <tr>
+                    <td>{{ data.first_name }}</td>
+                    <td>{{ data.last_name }}</td>
+                    <td>{{ data.age }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div> 
+    <div class="row" id="anchor">
+        <a href="/index/dojos">Home</a>
+    </div>
+</div>
 </body>
 </html>

@@ -15,7 +15,6 @@ class Dojos:
         # query = 'SELECT * from dojos LEFT JOIN ninjas ON dojos.id = ninjas.dojo_id WHERE dojos.id = 2;'
         query = 'SELECT * FROM dojos;'
         results = connectToMySQL(DATABASE).query_db(query)
-        print("************* results: ", results)
         dojos = []
         for dojo in results:
             dojos.append( cls(dojo) )
@@ -24,19 +23,4 @@ class Dojos:
     @classmethod
     def create(cls, data):
         query = "INSERT INTO dojos( name, updated_at ) VALUES( %(name)s, NOW() );"
-        print("***********", data)
         return connectToMySQL(DATABASE).query_db(query, data)
-
-    @classmethod
-    def show_dojo_ninjas(cls, id):
-        query = 'SELECT * from dojos LEFT JOIN ninjas ON dojos.id = ninjas.dojo_id WHERE dojos.id = %(id)s;'
-        data = {
-            "id": id
-        }
-        results = connectToMySQL(DATABASE).query_db(query, data)
-        print("*********** results: ", results)
-        dojos = []
-        for dojo in results:
-            dojos.append( cls(dojo) )
-        print("printing dojos: ", dojos)
-        return dojos

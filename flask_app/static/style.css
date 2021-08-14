@@ -1,0 +1,10 @@
+.container {
+    margin: 0px;
+    padding: 0px;
+}
+
+#header {
+    background-color: rgb(216, 192, 161);
+    display: flex;
+
+}
